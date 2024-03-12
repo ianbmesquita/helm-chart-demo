@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app: {{ .Values.appName }}
+    app.kubernetes.io/component: node-app
+    app.kubernetes.io/instance: node-app
+  name: {{ .Values.appName }}
+spec:
+  host: "node-app.apps.cluster-g565k.g565k.sandbox1545.opentlc.com"
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: node-app
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Allow
+  wildcardPolicy: None

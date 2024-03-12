@@ -1,0 +1,1 @@
+Your application is running at: "http://{{ .Values.route.host }}.{{ .Values.route.domain }}/hello"
